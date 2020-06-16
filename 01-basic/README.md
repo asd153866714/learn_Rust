@@ -38,26 +38,34 @@ error: linking with ` link.exe` failed: exit code: 1
 cargo new --lib <專案名稱>
 ```
 ### 編譯
-`cargo build`
-
+```
+cargo build
+```
 ### 執行
-`cargo run`
-
+```
+cargo run
+```
 沒有事先進行編譯的話，直接使用 cargo run 也會先進行編譯
 
 ### 發布程式
-`cargo build --release`
+```
+cargo build --release
+```
 
 ### 測試
-`cargo test`
+```
+cargo test
+```
 
 ### 刪除
-* 把整個 target 目錄刪除
-
-`cargo clean`
-
+把整個 target 目錄刪除
+```
+cargo clean
+```
 # rustfmt 格式化
 ```
 rustfmt main.rs
+
+// 格式化 Cargo 專案
 cargo fmt
 ```
