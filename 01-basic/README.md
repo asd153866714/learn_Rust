@@ -31,9 +31,11 @@ error: linking with ` link.exe` failed: exit code: 1
 
 # 使用 Cargo
 ### 建立專案
-`cargo new <專案名稱>`
+```
+cargo new <專案名稱>
+```
 
-* 可以被用來相依進其它專案中作為函式庫使用的函式庫程式專案
+可以被用來相依進其它專案中作為函式庫使用的函式庫程式專案
 ```
 cargo new --lib <專案名稱>
 ```
