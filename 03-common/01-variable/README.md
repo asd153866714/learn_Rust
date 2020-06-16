@@ -13,6 +13,7 @@ x = 6
 ```
 # const
 * 常數不可改變
+
 `const MAX_POINTS: u32 = 100_000;`
 
 # Shadowing
