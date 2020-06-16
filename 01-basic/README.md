@@ -25,6 +25,36 @@ rustc main.rs
 error: linking with ` link.exe` failed: exit code: 1
 ```
 
-解決：把 `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\bin\Hostx64\x64` 加入環境變數
+解決：把 `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\bin\Hostx64\x64` 加入環境變數 PATH
 
 參考 -- https://github.com/rust-lang/rustup/issues/1455
+
+# 使用 Cargo
+### 建立專案
+`cargo new <專案名稱>`
+
+* 可以被用來相依進其它專案中作為函式庫使用的函式庫程式專案
+`cargo new --lib <專案名稱>`
+
+### 編譯
+`cargo build`
+
+### 執行
+`cargo run`
+沒有事先進行編譯的話，直接使用cargo run也會先進行編譯
+
+### 發布程式
+`cargo build --release`
+
+### 測試
+`cargo test`
+
+### 刪除
+* 把整個 target 目錄刪除
+`cargo clean`
+
+# rustfmt 格式化
+```
+rustfmt main.rs
+cargo fmt
+```
