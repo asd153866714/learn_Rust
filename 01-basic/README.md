@@ -20,7 +20,8 @@ Hello world!
 
 ### 問題
 ```
-rustc main.rs
+user@DESKTOP-9VVBDPS MINGW64 /d/Xing/learn_Rust/00-bsic (master)
+$rustc main.rs
 
 error: linking with ` link.exe` failed: exit code: 1
 ```
