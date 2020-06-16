@@ -1,12 +1,12 @@
-# Linux 或 macOS 安裝
-
-`$ curl https://sh.rustup.rs -sSf | sh`
+# 安裝
+### Linux 或 MacOS
+```$ curl https://sh.rustup.rs -sSf | sh```
 
 記得加入 PATH
 
-# Windows 安裝
+### Windows 
 
-https://www.rust-lang.org/install.html
+載點 -- https://www.rust-lang.org/install.html
 
 # 編譯並執行
 ```
@@ -30,6 +30,7 @@ error: linking with ` link.exe` failed: exit code: 1
 參考 -- https://github.com/rust-lang/rustup/issues/1455
 
 # 使用 Cargo
+
 ### 建立專案
 ```
 cargo new <專案名稱>
@@ -43,6 +44,8 @@ cargo new --lib <專案名稱>
 ```
 cargo build
 ```
+產生執行檔放在 target/debug
+
 ### 執行
 ```
 cargo run
