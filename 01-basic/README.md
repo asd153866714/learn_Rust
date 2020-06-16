@@ -34,14 +34,16 @@ error: linking with ` link.exe` failed: exit code: 1
 `cargo new <專案名稱>`
 
 * 可以被用來相依進其它專案中作為函式庫使用的函式庫程式專案
-`cargo new --lib <專案名稱>`
-
+```
+cargo new --lib <專案名稱>
+```
 ### 編譯
 `cargo build`
 
 ### 執行
 `cargo run`
-沒有事先進行編譯的話，直接使用cargo run也會先進行編譯
+
+沒有事先進行編譯的話，直接使用 cargo run 也會先進行編譯
 
 ### 發布程式
 `cargo build --release`
@@ -51,6 +53,7 @@ error: linking with ` link.exe` failed: exit code: 1
 
 ### 刪除
 * 把整個 target 目錄刪除
+
 `cargo clean`
 
 # rustfmt 格式化
