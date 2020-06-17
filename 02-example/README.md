@@ -5,7 +5,7 @@ let secret_number = rand::thread_rng().gen_range(1, 101);
 ```
 * :: => 尋找指定套件或是模組下的項目
 
-   從 rand 套件中呼叫 thread_rng() 這個函數，thread_rng這個函數會回傳一個ThreadRng 結構(struct)的實體(instance)
+   從 rand 套件中呼叫 thread_rng() 這個函數，thread_rng() 回傳一個 `ThreadRng` 結構實體
 
 . => 使用結構實體的方法
 
