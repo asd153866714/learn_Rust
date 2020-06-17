@@ -20,7 +20,9 @@ let secret_number = rand::thread_rng().gen_range(1, 101);
 let mut guess = String::new();
 ```
 宣告 `guess`，來儲存輸入的文字，產生 `String` 結構的實體
+
 </br>
+
 ```
 io::stdin().read_line(&mut guess)
    .expect("Failed to read line");
@@ -34,6 +36,7 @@ io::stdin().read_line(&mut guess)
 
 `expect()` => 如果結果為 Err， 回傳 "Failed to read line"
 
+</br>
 
 ```
 let guess: u32 = match guess.trim().parse(){
