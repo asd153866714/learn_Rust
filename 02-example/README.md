@@ -70,7 +70,7 @@ match guess.cmp(&secret_number){
 ```
 比較輸入的數字和隨機產生的亂數的大小
 
-### 執行
+# 執行
 ```
 user@DESKTOP-9VVBDPS MINGW64 /d/Xing/learn_Rust/02-example/guessing_game (master)
 $ cargo run
