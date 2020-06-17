@@ -56,6 +56,7 @@ let guess: u32 = match guess.trim().parse(){
    * Err => 進入下一次 =循環，等待新的輸入
    * 原本是用 `expect()` 方法，但是輸入非數字時會產生錯誤
 
+</br>
 
 ```
 match guess.cmp(&secret_number){
