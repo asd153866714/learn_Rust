@@ -1,5 +1,6 @@
 # 猜數字
 # 說明
+###
 ```
 let secret_number = rand::thread_rng().gen_range(1, 101);
 ```
@@ -7,12 +8,12 @@ let secret_number = rand::thread_rng().gen_range(1, 101);
 
 從 `rand` 套件中呼叫 `thread_rng()` 這個函數，`thread_rng()` 回傳一個 `ThreadRng` 結構實體
 
-`.` => 使用結構實體的方法
+`.` => 使用結構實體的方法：
 
 使用 `ThreadRng` 結構實體的方法，`gen_range()`
    
 `gen_range(1, 101)` 隨機產生 1~100 的整數
-
+###
 ```
 let mut guess = String::new();
 ```
