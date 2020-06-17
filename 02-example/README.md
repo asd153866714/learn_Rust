@@ -13,13 +13,12 @@ let secret_number = rand::thread_rng().gen_range(1, 101);
 使用 `ThreadRng` 結構實體的方法，`gen_range()`
    
 `gen_range(1, 101)` 隨機產生 1~100 的整數
-
+　　
+　　
 ```
 let mut guess = String::new();
 ```
 宣告 `guess`，來儲存輸入的文字，產生 `String` 結構的實體
-      
-      
 ```
 io::stdin().read_line(&mut guess)
    .expect("Failed to read line");
