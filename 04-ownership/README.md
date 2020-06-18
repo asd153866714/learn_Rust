@@ -152,6 +152,8 @@ fn change(some_string: &mut String) {
 }
 ```
 
+<br>
+
 * 為了維持程式的安全性，使用可變引用有個很大的限制，一個變數在一個 scope 下，同時只能夠有一個可變引用，例如：
 ```
 	fn main() {
@@ -195,12 +197,45 @@ let r3 = &mut s; // BIG PROBLEM
 ```
 </br>
 
-可變的變數被借給其它變數使用之後，在尚未歸還前，都不能再被改變。舉例來說：
+可變的變數被借給其它變數使用之後，在尚未歸還前，都不能再被改變或移動。舉例來說：
 ```
 fn main() {
     let mut a = 1;
     let b = &a;
     // a = 1;
     println!("a = {}", a);
+}
+
+fn main() {
+    let a = String::from("hi");
+    let b = &a;
+    let c = a;
+}
+```
+
+# 垂懸引用 (Dangling References)
+
+* 在具有指標的語言中，很容易通過釋放內存時，保留原本指向他的指標而產生錯誤的垂懸指標。
+* 垂懸指標 (dangling pointer)：指向的內存已經被非配給其他擁有者。
+
+```
+fn main() {
+    let reference_to_nothing = dangle();
+}
+
+fn dangle() -> &String {
+    let s = String::from("hello");
+
+    &s
+}
+```
+會產生編譯錯誤，因為`s`是在函數內創建的，當該函數執行完畢後，`s`會被釋放，如果嘗試傳回他的引用值，表示這個引用會指向一個無效的`String`結構。
+
+解決方法是直接傳回`String`：
+```
+fn no_dangle() -> String {
+    let s = String::from("hello");
+
+    s
 }
 ```
