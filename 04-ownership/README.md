@@ -78,5 +78,129 @@ fn main() {
     
     * copy： 參數為固定大小的型態
     * move： 相反
+```
+fn main() {
+    let s = String::from("hello");  // s 进入作用域
+
+    takes_ownership(s);             // s 的值移动到函数里 ...
+                                    // ... 所以到这里不再有效
+    // println!("{}", s);                              
+
+    let x = 5;                      // x 进入作用域
+
+    makes_copy(x);                  // x 应该移动函数里，
+                                    // 但 i32 是 Copy 的，所以在后面可继续使用 x
+    // println!("{}", x);
+
+} // 这里, x 先移出了作用域，然后是 s。但因为 s 的值已被移走，
+  // 所以不会有特殊操作
+
+fn takes_ownership(some_string: String) { // some_string 进入作用域
+    println!("{}", some_string);
+} // 这里，some_string 移出作用域并调用 `drop` 方法。占用的内存被释放
+
+fn makes_copy(some_integer: i32) { // some_integer 进入作用域
+    println!("{}", some_integer);
+} // 这里，some_integer 移出作用域。不会有特殊操作
+```
+* `println!("{}", s)` 會發生錯誤，因為上面的 s 已經被移動給`takes_ownership(s)`，所有權也被轉移了。
+
+* `println!("{}", x)` 不會發生錯誤，因為 x 是固定大小的整數型態，被複製給`makes_copy(x)`，不會改變原有的值和所有權。
+
 
 # 引用與借用
+```
+fn main() {
+    let s = String::from("hello");
+ 
+    let len = calculate_length(&s);
+ 
+    println!("The length of '{}' is {}.", s, len);
+}
+ 
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+```
+* `&` 符號代表「引用」(reference)，`&s`創建了一個指向`s`的值的引用，但是沒有所有權，作用域結束後也不會丟棄引用的值。
+
+* 我們將獲取引用作為函數參數稱為「借用」(borrowing)，使用完畢，必須歸還。
+
+# 可變引用
+
+```
+fn main() {
+    let s = String::from("hello");
+
+    change(&s);
+}
+
+fn change(some_string: &String) {
+    some_string.push_str(", world");
+}
+```
+* 會發生錯誤，正如一般的變數，引用的變數也是預設不可變的，必須加上`mut`。
+```
+fn main() {
+    let mut s = String::from("hello");
+
+    change(&mut s);
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+```
+
+* 為了維持程式的安全性，使用可變引用有個很大的限制，一個變數在一個 scope 下，同時只能夠有一個可變引用，例如：
+```
+	fn main() {
+    let mut s = String::from("hello");
+ 
+    let r1 = &mut s;
+    let r2 = &mut s;
+}
+```
+`r2` 會發生錯誤，因為`s`已經有一個可變引用`r1`。
+
+* Rust 這樣的設計是為了避免「資料競爭」(data race)，可由這三種行為產生：
+
+    1. 有兩個或更多的指標同時存取同一筆資料。
+    2. 有一個以上的指標正在被用來寫入資料。
+    3. 沒有同步訪問資料的機制。
+
+</br>
+
+可以使用大括号来創建一个新的作用域，以允许擁有多个可變引用，只是不能 **同時**擁有：
+```
+let mut s = String::from("hello");
+
+{
+    let r1 = &mut s;
+
+} // r1 在这里离开了作用域，所以我们完全可以创建一个新的引用
+
+let r2 = &mut s;
+```
+
+</br>
+
+在一個scope下，不可變參考和可變參考也不能同時使用。舉例來說：
+```
+let mut s = String::from("hello");
+
+let r1 = &s; // no problem
+let r2 = &s; // no problem
+let r3 = &mut s; // BIG PROBLEM
+```
+</br>
+
+可變的變數被借給其它變數使用之後，在尚未歸還前，都不能再被改變。舉例來說：
+```
+fn main() {
+    let mut a = 1;
+    let b = &a;
+    // a = 1;
+    println!("a = {}", a);
+}
+```

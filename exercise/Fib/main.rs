@@ -1,7 +1,7 @@
 // 費式數列
 use std::io;
 
-fn fib(n: u32) -> u32 {
+fn fib(n: u32) -> u64 {
     if n==0 || n==1 {
         return 1;
     }
