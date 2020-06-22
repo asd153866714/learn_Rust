@@ -7,6 +7,6 @@
     * 中文書籍 -- https://kaisery.gitbooks.io/trpl-zh-cn/content/
     * 官方課程 -- https://github.com/rust-lang/rustlings/
 
-* 01..05 資料夾按照官方書籍的章節順序
+* 01 .. 05 資料夾按照官方書籍的章節順序
 
 * 練習範例程式 -- [exercise](exercise)
