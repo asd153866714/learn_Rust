@@ -1,5 +1,4 @@
 // 找最大公因數
-use std::io;
 use text_io::scan;
 
 fn gcd(a:u32, b:u32) -> u32 {

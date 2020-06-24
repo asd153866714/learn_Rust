@@ -22,7 +22,7 @@ fn main() {
 
         let n: u32 = match n.trim().parse(){
             Ok(num) => num,
-            Err(_) => continue,
+            Err(_) => break,
         };
 
         println!("result : {}\n", fib(n));
